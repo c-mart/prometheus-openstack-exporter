@@ -158,7 +158,7 @@ class Neutron():
                 tenant = self.tenant_map[ip['tenant_id']]
             except KeyError:
                 tenant = 'Unknown tenant ({})'.format(ip['tenant_id'])
-            key = (config['cloud'], subnet, tenant, 'floatingip', ip['status'])
+            key = (config['cloud'], subnet, tenant, 'floatingip', ip.get('status', None))
             if key in ips:
                 ips[key] += 1
             else:
