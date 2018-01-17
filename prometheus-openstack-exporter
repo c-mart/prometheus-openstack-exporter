@@ -170,12 +170,12 @@ class DataGatherer(Thread):
                     else:
                         break
 
-                prodstack['volume_quotas'] = {}
-                prodstack['nova_quotas'] = {}
-                for t in prodstack['tenants']:
-                    tid = t['id']
-                    prodstack['volume_quotas'][tid] = cinder.quotas.get(tid, usage=True)._info
-                    prodstack['nova_quotas'][tid] = nova.quotas.get(tid, detail=True)._info
+                #prodstack['volume_quotas'] = {}
+                #prodstack['nova_quotas'] = {}
+                #for t in prodstack['tenants']:
+                #    tid = t['id']
+                #    prodstack['volume_quotas'][tid] = cinder.quotas.get(tid, usage=True)._info
+                #    prodstack['nova_quotas'][tid] = nova.quotas.get(tid, detail=True)._info
             except:
                 # Ignore failures, we will try again after refresh_interval.
                 # Most of them are termporary ie. connectivity problmes
@@ -313,7 +313,7 @@ class Cinder():
                 vol.labels(config['cloud'], tenant, tt).inc(q['volumes'][tt])
 
     def get_stats(self):
-        self.gen_volume_quota_stats()
+        # self.gen_volume_quota_stats()
         return generate_latest(self.registry)
 
 
