@@ -474,7 +474,7 @@ class Nova():
         self.gen_hypervisor_stats()
         self.gen_instance_stats()
         self.gen_overcommit_stats()
-        self.gen_quota_stats()
+        #self.gen_quota_stats()
         return generate_latest(self.registry)
 
 
